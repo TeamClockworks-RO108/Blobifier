@@ -35,7 +35,11 @@ You will need to print the following parts:
  * Arm - a taller (by 2mm) shaker arm is provided to avoid collisions.
 
 
+# Assembly
 
+| Install the D2F-L Switch using two M2x10 screws | Install the stepper using two M3x8 screws | Slide in the pulley and tighten the grob screws using the lateral hole |
+| --- | --- | --- |
+| ![01](Images/01.jpg) | ![02](Images/02.jpg) | ![03](Images/03.jpg) |
 
 
 # Software configuration
