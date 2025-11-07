@@ -21,7 +21,8 @@ If you do not have the required components for a regular blobifier, to build a m
  * 3x M3 FHCS 8mm (or 6mm also works)
  * 3x M3 heat set inserts
  * 1x 10x15 aluminium strip (if you have the 'newer' 10x30, you can cut it easily)
-
+ * 2x M2 10mm screws (any head)
+ * 1x D2F-L microswitch
 
 
 
