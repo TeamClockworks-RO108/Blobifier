@@ -1,6 +1,6 @@
 
 This model uses a small GT2 belt as a toothed rack to move the blobifier's tray back and forth. 
-To make room for a stepper motor, the blobifier assembly is risen by 2mm. This should not be an issue on most setups, but depending how your bottom panel sits, it might collide with the skake arm. To solve this, a redesigned shaker arm is provided.
+To make room for a stepper motor, the blobifier assembly is risen by 2mm. This should not be an issue on most setups, but depending how your bottom panel sits, it might collide with the shaker arm. To solve this, a redesigned shaker arm is provided.
 
 
 # BOM
@@ -12,7 +12,7 @@ To build this, you will need to have the standard components for a blobifier and
  * Nema17 Stepper motor, pancake recommended
  * GT2 Timing belt, 37 teeth, open
  * GT2 20T Pulley with 5mm bore
-
+ * An open stepper slot on your motherboard with your preferred driver
 
 If you do not have the required components for a regular blobifier, to build a minimal setup (tray and bucket) you will also need:
 
