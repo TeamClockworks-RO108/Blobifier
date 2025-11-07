@@ -34,3 +34,35 @@ You will need to print the following parts:
  * BeltCarrier and Tensioner - we wrap the belt around this part. It translates rotational movement to linear. A screw hole allows the belt to be tensioned after installation. 
  * Arm - a taller (by 2mm) shaker arm is provided to avoid collisions.
 
+
+
+
+
+# Software configuration
+
+```ini
+# MOTOR6 port on BTT Octopus v1.0
+[manual_stepper stepper_blobifier]
+step_pin: PE2
+dir_pin: PE3
+enable_pin: !PD4
+microsteps: 32
+endstop_pin: tmc2209_stepper_blobifier:virtual_endstop
+position_min: 0
+position_max: 15
+velocity: 100
+accel: 2000
+
+[tmc2209 stepper_x]
+uart_pin: PE1
+interpolate: True
+run_current: 0.8
+hold_current: 0.3
+sense_resistor: 0.110
+stealthchop_threshold: 0
+driver_SGTHRS: 0
+diag_pin: PG14 # Also connect J22 on motherboard, will disable STOP6/J32
+
+
+```
+
