@@ -4,6 +4,7 @@ We have found that cheap MG90/SG90 servo motors can die pretty fast from bed hea
 This model uses a small GT2 belt as a toothed rack to move the blobifier's tray back and forth. 
 To make room for a stepper motor, the blobifier assembly is risen by 2mm. This should not be an issue on most setups, but depending how your bottom panel sits, it might collide with the shaker arm. To solve this, a redesigned shaker arm is provided.
 
+This mod is licensed under the same license of Blobifier, [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 # BOM
 
