@@ -52,6 +52,10 @@ You will need to print the following parts:
 # Software configuration
 
 ```ini
+
+# If your MCU is a repurposed SB2209, the following pins are used:
+# step: PD0, dir: PD1, enable: !PD2, uart: PA15
+
 # MOTOR6 port on BTT Octopus v1.0
 [manual_stepper stepper_blobifier]
 step_pin: PE2
@@ -61,19 +65,53 @@ microsteps: 32
 endstop_pin: tmc2209_stepper_blobifier:virtual_endstop
 position_min: 0
 position_max: 15
-velocity: 100
-accel: 2000
+velocity: 200
+accel: 15000
 
-[tmc2209 stepper_x]
+[tmc2209 manual_stepper stepper_blobifier]
 uart_pin: PE1
-interpolate: True
-run_current: 0.8
+run_current: 0.6
 hold_current: 0.3
 sense_resistor: 0.110
-stealthchop_threshold: 0
-driver_SGTHRS: 0
-diag_pin: PG14 # Also connect J22 on motherboard, will disable STOP6/J32
+stealthchop_threshold: 99999999
 
 
+```
+
+In the `mmu/addons/blobifier_hw.cfg` file, comment out the entire servo section: 
+
+```ini
+# [mmu_servo blobifier]
+# Pin for the servo.
+# pin: PD6
+# Adjust this value until a 'BLOBIFIER_SERVO POS=out' extends the tray fully without a 
+# buzzing sound
+# minimum_pulse_width: 0.00053
+# Adjust this value until a 'BLOBIFIER_SERVO POS=in' retracts the tray fully without a 
+# buzzing sound
+# maximum_pulse_width: 0.0023
+# Leave this value at 180
+# maximum_servo_angle: 180
+```
+
+In the `mmu/addons/blobifier.cfg` file, find the `BLOBIFIER_SERVO` macro and apply the following changes:
+
+```diff
+[gcode_macro BLOBIFIER_SERVO]
+gcode:
+  {% set bl = printer['gcode_macro BLOBIFIER'] %}
+  {% set pos = params.POS %}
+  {% if pos == "in" %}
+-    SET_SERVO SERVO=blobifier ANGLE={bl.tray_angle_in}
++    _BLOBIFIER_RETRACT
+    G4 P{bl.dwell_time}
+  {% elif pos == "out" %}
+-    SET_SERVO SERVO=blobifier ANGLE={bl.tray_angle_out}
++    _BLOBIFIER_EXTEND
+    G4 P{bl.dwell_time}
+  {% else %}
+    {action_respond_info("BLOBIFIER: provide POS=[in|out]")}
+  {% endif %}
+-  SET_SERVO SERVO=blobifier WIDTH=0
 ```
 
