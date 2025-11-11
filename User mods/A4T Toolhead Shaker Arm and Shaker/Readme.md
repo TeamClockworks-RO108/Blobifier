@@ -13,7 +13,16 @@ A modified version of the shaker arm and shaker to fit the A4T toolhead.
 
 ## Which version to pick
 
-There are two versions of the shaker arm. Depending on your bed placement and overall z height of your blobifier you may get a better shaking "experience" with the Shaker_Arm_A4T_tighter_fit model. 
+### Shaker
+There are two versions of the shaker. Depending on your bed placement and overall z height of your blobifier you may get a better shaking "experience" with the Shaker_A4T_tighter_fit model. 
+
+### Shaker arm
+There are two versions of the shaker arm. If you experience the arm sagging with the normal version you can try the Shaker_Arm_A4T_flat_with_deck model.
+
+| Normal arm | Flat with deck model |
+|---|---|
+| ![Normal arm](Pictures/Shaker_Arm_A4T.png) | ![Flat with deck model](Pictures/Shaker_Arm_A4T_flat_with_deck.png) |
+
 
 ## Important configuration setup!
 
