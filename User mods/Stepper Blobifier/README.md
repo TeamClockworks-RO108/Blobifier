@@ -51,6 +51,10 @@ You will need to print the following parts:
 
 # Software configuration
 
+Create a new configuration file (for example `blobifier-stepper.cfg`), include it in your main `printer.cfg` file and put the following content:
+
+
+
 ```ini
 
 # If your MCU is a repurposed SB2209, the following pins are used:
@@ -75,7 +79,31 @@ hold_current: 0.3
 sense_resistor: 0.110
 stealthchop_threshold: 99999999
 
+[gcode_macro _BLOBIFIER_HOME]
+description: Pull back to -15mm at 100mm/s, then set that point as 0s
+gcode:
+  {% set speed = 200 %}
+  MANUAL_STEPPER STEPPER=stepper_blobifier ENABLE=1
+  MANUAL_STEPPER STEPPER=stepper_blobifier MOVE=-15 SPEED={speed} SYNC=1
+  MANUAL_STEPPER STEPPER=stepper_blobifier SET_POSITION=0
 
+# --- Fully extend to +15mm ---
+[gcode_macro _BLOBIFIER_EXTEND]
+description: Extend blobifier to +15mm (fully out). If disabled, home first.
+gcode:
+  {% if not printer.stepper_enable.steppers['manual_stepper stepper_blobifier'] %}
+    _BLOBIFIER_HOME
+  {% endif %}
+  MANUAL_STEPPER STEPPER=stepper_blobifier MOVE=15 SYNC=0
+
+# --- Retract to 0mm (inside) ---
+[gcode_macro _BLOBIFIER_RETRACT]
+description: Retract blobifier to 0mm (inside). If disabled, home first.
+gcode:
+  {% if not printer.stepper_enable.steppers['manual_stepper stepper_blobifier'] %}
+    _BLOBIFIER_HOME
+  {% endif %}
+  MANUAL_STEPPER STEPPER=stepper_blobifier MOVE=0 SYNC=0
 ```
 
 In the `mmu/addons/blobifier_hw.cfg` file, comment out the entire servo section: 
