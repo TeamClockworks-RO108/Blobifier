@@ -34,11 +34,10 @@ You will need to print the following parts:
  * BeltCarrier and Tensioner - we wrap the belt around this part. It translates rotational movement to linear. A screw hole allows the belt to be tensioned after installation. 
  * Arm - a taller (by 2mm) shaker arm is provided to avoid collisions.
 
- # Software configuration
-
-Create a new configuration file (for example `blobifier-stepper.cfg`), include it in your main `printer.cfg` file and put the following content:
-
 # Software configuration
+
+Create a new configuration file (for example `blobifier-stepper.cfg`), include it in your main `printer.cfg` file and put the following contents. Adjust pins and driver type as per your setup. 
+
 
 ```ini
 
@@ -65,7 +64,7 @@ sense_resistor: 0.110
 stealthchop_threshold: 99999999
 
 [gcode_macro _BLOBIFIER_HOME]
-description: Pull back to -15mm at 100mm/s, then set that point as 0s
+description: Pull back to -15mm, then set that point as 0s
 gcode:
   {% set speed = 200 %}
   MANUAL_STEPPER STEPPER=stepper_blobifier ENABLE=1
@@ -127,6 +126,9 @@ gcode:
   {% endif %}
 -  SET_SERVO SERVO=blobifier WIDTH=0
 ```
+
+The servo blobifier sits about 2mm higher than the standard blobifier, therefore you might need to increase your `variable_tray_top` by 2mm. 
+It is also possible to decrease `variable_dwell_time` to 100 because the stepper is much faster than the standard servo motor. 
 
 # Assembly
 
