@@ -34,26 +34,11 @@ You will need to print the following parts:
  * BeltCarrier and Tensioner - we wrap the belt around this part. It translates rotational movement to linear. A screw hole allows the belt to be tensioned after installation. 
  * Arm - a taller (by 2mm) shaker arm is provided to avoid collisions.
 
-
-# Assembly
-
-| Install the D2F-L Switch using two M2x10 screws. | Install the stepper using two M3x8 screws. | Slide in the pulley and tighten the grub screws using the lateral hole. |
-| --- | --- | --- |
-| ![01](Images/01.jpg) | ![02](Images/02.jpg) | ![03](Images/03.jpg) |
-
-| Place the tensioner in the belt carrier and insert the belt in the tensioner side. Pull the end (so that the tensioner sits at the beginning of the track) and insert tightly on the other side. Screw a M3x8 in the provided hole in the carrier to ensure belt tension. | Place the carrier assembly inside the main part | Insert the tray and screw it in the carrier using two M3x6 FHCS | 
-| --- | --- | --- |
-| ![04](Images/04.jpg) | ![05](Images/05.jpg) | ![06](Images/06.jpg) |
-
-### Final result
-
-![07](Images/07.jpg)
-
-# Software configuration
+ # Software configuration
 
 Create a new configuration file (for example `blobifier-stepper.cfg`), include it in your main `printer.cfg` file and put the following content:
 
-
+# Software configuration
 
 ```ini
 
@@ -142,4 +127,18 @@ gcode:
   {% endif %}
 -  SET_SERVO SERVO=blobifier WIDTH=0
 ```
+
+# Assembly
+
+| Install the D2F-L Switch using two M2x10 screws. | Install the stepper using two M3x8 screws. | Slide in the pulley and tighten the grub screws using the lateral hole. |
+| --- | --- | --- |
+| ![01](Images/01.jpg) | ![02](Images/02.jpg) | ![03](Images/03.jpg) |
+
+| Place the tensioner in the belt carrier and insert the belt in the tensioner side. Pull the end (so that the tensioner sits at the beginning of the track) and insert tightly on the other side. Screw a M3x8 in the provided hole in the carrier to ensure belt tension. | Place the carrier assembly inside the main part | Insert the tray and screw it in the carrier using two M3x6 FHCS | 
+| --- | --- | --- |
+| ![04](Images/04.jpg) | ![05](Images/05.jpg) | ![06](Images/06.jpg) |
+
+### Final result
+
+![07](Images/07.jpg)
 
