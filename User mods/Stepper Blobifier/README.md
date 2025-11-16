@@ -57,7 +57,7 @@ endstop_pin: tmc2209_stepper_blobifier:virtual_endstop
 position_min: 0
 position_max: 15
 velocity: 200
-accel: 15000
+accel: 9000
 
 [tmc2209 manual_stepper stepper_blobifier]
 uart_pin: PE1
@@ -81,7 +81,7 @@ gcode:
   {% if not printer.stepper_enable.steppers['manual_stepper stepper_blobifier'] %}
     _BLOBIFIER_HOME
   {% endif %}
-  MANUAL_STEPPER STEPPER=stepper_blobifier MOVE=15 SYNC=0
+  MANUAL_STEPPER STEPPER=stepper_blobifier MOVE=15 SYNC=1
 
 # --- Retract to 0mm (inside) ---
 [gcode_macro _BLOBIFIER_RETRACT]
@@ -90,7 +90,7 @@ gcode:
   {% if not printer.stepper_enable.steppers['manual_stepper stepper_blobifier'] %}
     _BLOBIFIER_HOME
   {% endif %}
-  MANUAL_STEPPER STEPPER=stepper_blobifier MOVE=0 SYNC=0
+  MANUAL_STEPPER STEPPER=stepper_blobifier MOVE=0 SYNC=1
 ```
 
 In the `mmu/addons/blobifier_hw.cfg` file, comment out the entire servo section: 
